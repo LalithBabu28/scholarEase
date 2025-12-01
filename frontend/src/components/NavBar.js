@@ -17,8 +17,8 @@ const NavBar = () => {
                         </>
                     ) : (
                         <>
-                            {role === 'ADMIN' && <Link to="/admin">Admin Dashboard</Link>}
-                            {role === 'STUDENT' && <Link to="/student">Student Dashboard</Link>}
+                            {role === 'ADMIN' && <Link to="/admin"></Link>}
+                            {role === 'STUDENT' && <Link to="/student"></Link>}
                             <button onClick={logout} className="logout-btn">Logout ({user})</button>
                         </>
                     )}
