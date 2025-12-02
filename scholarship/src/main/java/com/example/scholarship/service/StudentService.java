@@ -31,11 +31,18 @@ public class StudentService {
         existingUser.setAadharno(updatedStudent.getAadharno());
         existingUser.setPanno(updatedStudent.getPanno());
         existingUser.setMobileNo(updatedStudent.getMobileNo());
-        existingUser.setPassword(encoder.encode(updatedStudent.getPassword()));
+        if (updatedStudent.getPassword() != null && !updatedStudent.getPassword().isBlank()) {
+            existingUser.setPassword(encoder.encode(updatedStudent.getPassword()));
+        }
         return sturepo.save(existingUser);
     }
 
     public Optional<Student> findByEmail(String email) {
         return sturepo.findByEmail(email);
     }
+
+    public Optional<Student> getStudentById(Long id) {
+        return sturepo.findById(id);
+    }
+
 }

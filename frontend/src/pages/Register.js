@@ -27,14 +27,69 @@ const Register = () => {
     return (
         <div className="auth-container">
             <h2>Student Registration</h2>
-            <form onSubmit={handleSubmit}>
-                <input name="name" placeholder="Full Name" onChange={handleChange} required />
-                <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-                <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-                <input name="dateOfBirth" type="date" placeholder="DOB" onChange={handleChange} required />
-                <input name="aadharno" type="number" placeholder="Aadhar Number" onChange={handleChange} required />
-                <input name="panno" placeholder="PAN Number" onChange={handleChange} required />
-                <input name="mobileNo" type="number" placeholder="Mobile Number" onChange={handleChange} required />
+            
+            <form onSubmit={handleSubmit} className="form-fields">
+
+                <label>Full Name</label>
+                <input 
+                    name="name" 
+                    placeholder="Enter full name" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>Email</label>
+                <input 
+                    name="email" 
+                    type="email" 
+                    placeholder="Enter email" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>Password</label>
+                <input 
+                    name="password" 
+                    type="password" 
+                    placeholder="Enter password" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>Date of Birth</label>
+                <input 
+                    name="dateOfBirth" 
+                    type="date" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>Aadhar Number</label>
+                <input 
+                    name="aadharno" 
+                    type="number" 
+                    placeholder="Enter Aadhar number" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>PAN Number</label>
+                <input 
+                    name="panno" 
+                    placeholder="Enter PAN number" 
+                    onChange={handleChange} 
+                    required 
+                />
+
+                <label>Mobile Number</label>
+                <input 
+                    name="mobileNo" 
+                    type="number" 
+                    placeholder="Enter mobile number" 
+                    onChange={handleChange} 
+                    required 
+                />
+
                 <button type="submit">Register</button>
             </form>
         </div>

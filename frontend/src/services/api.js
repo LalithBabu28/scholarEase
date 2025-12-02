@@ -29,8 +29,10 @@ export const studentService = {
     getAllScholarships: () => api.get('/student/scholarship/all'),
     apply: (data) => api.post('/student/apply', data),
     getMyApplications: (studentId) => api.get(`/student/application/${studentId}`),
-    updateProfile: (id, data) => api.put(`/student/update/${id}`, data)
+    updateProfile: (id, data) => api.put(`/student/update/${id}`, data),
+    getProfile: (id) => api.get(`/student/profile/${id}`)   // 👈 Added
 };
+
 
 export const adminService = {
     addScholarship: (data) => api.post('/admin/scholarship', data),

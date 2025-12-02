@@ -98,4 +98,10 @@ public class StudentController {
     public List<com.example.scholarship.model.Application> getApplicationsByStudentId(@PathVariable Long studentId) {
         return applicationservice.getApplicationsByStudentId(studentId);
     }
+
+    @GetMapping("/profile/{id}")
+    public ResponseEntity<?> getProfile(@PathVariable Long id) {
+        return ResponseEntity.ok(studentService.getStudentById(id));
+    }
+
 }

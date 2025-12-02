@@ -118,17 +118,29 @@ const AdminDashboard = () => {
 )}
 
 
-            {/* TAB 2: Manage Scholarships */}
-            {activeTab === 1 && (
-                <ul>
-                    {scholarships.map((s) => (
-                        <li key={s.id} className="list-item">
-                            {s.scholarname}
-                            <button className="delete-btn" onClick={() => handleDeleteScholarship(s.id)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+           {/* TAB 2: Manage Scholarships */}
+{activeTab === 1 && (
+  <div className="scholarship-list">
+    {scholarships.map((s) => (
+      <div key={s.id} className="scholarship-item">
+        <div className="scholarship-info">
+          <span className="title">{s.scholarname}</span>
+          <br></br>
+          <span className="date">Deadline: {new Date(s.deadline).toLocaleDateString()}</span>
+        </div>
+
+        <button
+          className="delete-btn"
+          onClick={() => handleDeleteScholarship(s.id)}
+        >
+          Delete
+        </button>
+      </div>
+    ))}
+  </div>
+)}
+
+
 
             {/* TAB 3: Applications */}
             {activeTab === 2 && (
