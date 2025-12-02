@@ -9,11 +9,19 @@ import org.springframework.stereotype.Service;
 
 import com.example.scholarship.model.Application;
 import com.example.scholarship.model.Scholarship;
+import com.example.scholarship.model.Student;
 import com.example.scholarship.repository.ApplicationRepo;
 import com.example.scholarship.repository.ScholarRepo;
+import com.example.scholarship.repository.StudentRepository;
 
 @Service
 public class Applicationservice {
+
+    @Autowired
+    private StudentRepository studentRepo;
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private ApplicationRepo applicationrepo;
@@ -34,8 +42,26 @@ public class Applicationservice {
 
         if (optionalApp.isPresent()) {
             Application app = optionalApp.get();
+
+            Scholarship scholarship = scholarshiprepo.findById(app.getScholarId())
+                    .orElseThrow(() -> new RuntimeException("Scholarship not found"));
+
+            app.setScholarname(scholarship.getScholarname());
+
             app.setStatus(status);
+
             applicationrepo.save(app);
+
+            Student student = studentRepo.findById(app.getStudentId())
+                    .orElseThrow(() -> new RuntimeException("Student not found"));
+
+            String subject = "Scholarship Application Status Update";
+            String message = "Hello " + student.getName() + ",\n\n"
+                    + "Your application for **" + app.getScholarname() + "** has been **" + status + "**.\n\n"
+                    + "Regards,\nScholarEase Team";
+
+            emailService.sendEmail(student.getEmail(), subject, message);
+
         } else {
             throw new RuntimeException("Application not found with ID: " + id);
         }

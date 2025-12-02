@@ -30,18 +30,19 @@ export const studentService = {
     apply: (data) => api.post('/student/apply', data),
     getMyApplications: (studentId) => api.get(`/student/application/${studentId}`),
     updateProfile: (id, data) => api.put(`/student/update/${id}`, data),
-    getProfile: (id) => api.get(`/student/profile/${id}`)   // 👈 Added
+    getProfile: (id) => api.get(`/student/profile/${id}`)   
 };
-
 
 export const adminService = {
     addScholarship: (data) => api.post('/admin/scholarship', data),
-    getAllScholarships: () => api.get('/admin/scholarship/all'),  // GOOD
-deleteScholarship: (id) => api.delete(`/admin/scholarship/delete/${id}`), // GOOD
+    getAllScholarships: () => api.get('/admin/scholarship/all'),
+    deleteScholarship: (id) => api.delete(`/admin/scholarship/delete/${id}`),
 
     getAllApplications: () => api.get('/admin/applications'),
+    
     approveApplication: (id) => api.put(`/admin/application/acc/${id}`),
     rejectApplication: (id) => api.put(`/admin/application/rejected/${id}`),
 };
+
 
 export default api;

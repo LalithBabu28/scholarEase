@@ -40,7 +40,10 @@ public class SecurityConfig {
                 .requestMatchers("/api/student/register", "/api/student/login").permitAll()
                 .requestMatchers("/api/admin/login").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/student/**").hasRole("STUDENT")
                 .anyRequest().authenticated()
                 )
@@ -50,4 +53,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
